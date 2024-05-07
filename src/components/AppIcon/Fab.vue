@@ -1,0 +1,16 @@
+<template>
+  <FontAwesomeIcon
+    :icon="icon"
+    size="xs" />
+</template>
+<script lang="ts" setup>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import Icons from './icons';
+
+library.add(fab);
+defineProps<{
+  icon: Icons;
+}>();
+</script>

@@ -1,0 +1,38 @@
+stages:
+  - package
+  - docker
+
+before_script:
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+  - ssh-keyscan 192.168.127.52 >> ~/.ssh/known_hosts
+  - chmod 644 ~/.ssh/known_hosts
+
+variables:
+  SHA: $CI_COMMIT_SHA
+
+
+build package:
+  stage: package
+  image: node:16.16.0
+  script: 
+    - npm config set registry http://192.168.5.68:8013/repository/proxy.npm
+    - rm -rf package-lock.json
+    - sed -i "s/<\!-- gitlab build footer -->/<footer class="build">BUILD.`TZ=Asia/Shanghai date "+%Y-%m-%d %H:%M:%S"`($SHA)<\/footer>/" index.html
+    - npm install
+    - npm run build
+    - ssh 192.168.127.52 "mkdir -p /tmp/gs-electric-vue-frontend-$SHA"
+    - scp -r dist 192.168.127.52:/tmp/gs-electric-vue-frontend-$SHA
+    - scp nginx.conf  192.168.127.52:/tmp/gs-electric-vue-frontend-$SHA/
+    - scp Dockerfile 192.168.127.52:/tmp/gs-electric-vue-frontend-$SHA/
+    
+    - ssh 192.168.127.52 "docker stop ccxx_gs-electric-vue-frontend 2> /dev/null || true"
+    - ssh 192.168.127.52 "docker rmi mmxx_gs-electric-vue-frontend 2> /dev/null || true"
+    - ssh 192.168.127.52 "docker build -q -t mmxx_gs-electric-vue-frontend -f /tmp/gs-electric-vue-frontend-$SHA/Dockerfile /tmp/gs-electric-vue-frontend-$SHA"
+    - ssh 192.168.127.52 "docker run --rm --name ccxx_gs-electric-vue-frontend -v /etc/localtime:/etc/localtime:ro -d -p 9167:80 mmxx_gs-electric-vue-frontend"
+    - ssh 192.168.127.52 "rm -rf /tmp/gs-electric-vue-frontend-$SHA"
+  resource_group: prod-deploy
+  only:
+    - new_main

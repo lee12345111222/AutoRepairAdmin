@@ -1,0 +1,172 @@
+$--color-primary: #019583;
+
+.text-primary {
+  color: $--color-primary;
+}
+
+@mixin flex($align: center, $justify: center, $wrap: nowrap) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-wrap: $wrap;
+}
+
+.sysbtn {
+  min-width: 84px;
+  background: #acb0c5;
+  border-radius: 5px;
+  @include flex;
+  padding: 10px;
+  font-family: PingFang SC;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 16px;
+}
+
+.m_l_10 {
+  margin-left: 10px;
+}
+
+.mk_b {
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.mk_n {
+  position: absolute;
+  left: 30px;
+  top: 0px;
+  font-family: YouSheBiaoTiHei;
+  font-weight: 400;
+  font-size: 20px;
+  color: #282828;
+  line-height: 20px;
+  font-style: italic;
+
+  .englishName {
+    font-family: YouSheBiaoTiHei;
+    font-weight: 400;
+    font-size: 14px;
+    color: #353535;
+    line-height: 20px;
+    font-style: italic;
+  }
+}
+
+.card-body {
+  padding: 5px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.175);
+  border-radius: 0.375rem;
+
+  .card-header {
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 0.375rem 0.375rem 0px 0px;
+    background-color: #eae9e4;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.175);
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
+::v-deep {
+  .f_button {
+    .n-button {
+      padding: 0px 8px !important;
+    }
+  }
+}
+
+.f_btns {
+  width: 100%;
+  @include flex;
+
+  .btn {
+    width: 115px;
+    height: 44px;
+    background: #acb0c5;
+    border-radius: 5px;
+    @include flex;
+    font-family: PingFang SC;
+    font-weight: 500;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 17px;
+  }
+
+  .btn_tj {
+    margin-left: 18px;
+    background: #ffe791;
+  }
+}
+
+.table_wrapper {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  overflow: auto;
+
+  table {
+    min-width: 768px;
+    max-width: initial;
+
+    tr {
+      th,
+      td {
+        text-align: center;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .table_header_bg {
+    thead {
+      background-color: #eeeeee;
+    }
+  }
+}
+.gjc_t table {
+  min-width: 90vw;
+}
+::v-deep {
+  .card-body {
+    .n-button {
+      padding: 0px 8px !important;
+    }
+  }
+}
+
+.card-body {
+  max-height: calc(100vh - 165px);
+  overflow-y: auto;
+}
+
+.czl {
+  display: flex;
+  justify-content: space-around;
+}
+.pageHeadl {
+  height: 60px;
+  background-color: #87d8d1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  font-size: 18px;
+  color: #747474;
+  flex-direction: column;
+  line-height: 20px;
+}
