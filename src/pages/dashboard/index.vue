@@ -43,7 +43,7 @@
           :max="99">
           <div
             class="menuBlock"
-            @click="goToPage('dwx')">
+            @click="goToPage('repaired')">
             <n-icon size="25">
               <Build />
             </n-icon>
@@ -55,7 +55,7 @@
           :max="99">
           <div
             class="menuBlock"
-            @click="goToPage('djc')">
+            @click="goToPage('checked')">
             <n-icon size="25">
               <CarSportSharp />
             </n-icon>
@@ -64,7 +64,7 @@
         </n-badge>
         <div
           class="menuBlock"
-          @click="goToPage('lscx')">
+          @click="goToPage('historyList')">
           <n-icon size="25">
             <TimerOutline />
           </n-icon>
@@ -73,7 +73,7 @@
         <div
           v-if="userRole == 'admin'"
           class="menuBlock"
-          @click="goToPage('ymsd')">
+          @click="goToPage('setting')">
           <n-icon size="25">
             <TimerOutline />
           </n-icon>
@@ -122,16 +122,16 @@ const goToPage = (flag: any) => {
   if (flag == 'add') {
     router.push({ name: 'add' });
   }
-  if (flag == 'dwx') {
+  if (flag == 'repaired') {
     router.push({ name: 'repaired' });
   }
-  if (flag == 'djc') {
+  if (flag == 'checked') {
     router.push({ name: 'checked' });
   }
-  if (flag == 'lscx') {
+  if (flag == 'historyList') {
     router.push({ name: 'historyList' });
   }
-  if (flag == 'ymsd') {
+  if (flag == 'setting') {
     router.push({ name: 'setting' });
   }
 };

@@ -12,10 +12,10 @@ export default defineConfig({
       // '/api/encrypt': 'http://localhost:8080'
       // '/api': 'http://192.168.127.52:9069'
       '/api': {
-        target: 'http://192.168.30.8:8080',
+        // target: 'http://192.168.30.8:8080',
         // target: 'http://192.168.19.88:8080',
-        // target: 'http://localhost:8080',
-        rewrite: (p) => p.replace(/^\/api/, '')
+        target: 'http://127.0.0.1:8000'
+        // rewrite: (p) => p.replace(/^\/api/, '')
       }
     },
     host: '0.0.0.0'

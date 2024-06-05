@@ -11,10 +11,13 @@
     </div>
     <div class="login_form">
       <div class="formItem">
-        <n-input placeholder="請輸入用户名" />
+        <n-input
+          v-model:value="params.username"
+          placeholder="請輸入用户名" />
       </div>
       <div class="formItem">
         <n-input
+          v-model:value="params.password"
           placeholder="請輸入密码"
           type="password"
           show-password-on="click" />
@@ -31,9 +34,16 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import store from '@/store/index';
+import { req } from '@/common';
+import { ref } from 'vue';
 const router = useRouter();
-const gotoRegister = () => {
-  router.push({ name: 'login' });
+const params = ref({
+  password: '', username: ''
+});
+const gotoRegister = async() => {
+  // router.push({ name: 'login' });
+  const result = await req.post('/v1/register', params.value);
+  console.log(result, 'result', params.value);
 };
 </script>
 <style scoped lang="scss">

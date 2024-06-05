@@ -91,7 +91,7 @@
         <div />
       </template>
       <div class="modalContent">
-        <LscxInfo
+        <HistoryListInfo
           :selected-item="selectedItem"
           :flag="funFlag" />
       </div>
@@ -121,7 +121,7 @@ import {
 } from '@vicons/ionicons5';
 import { useDialog } from 'naive-ui';
 import commonFun from '@/common/index';
-import LscxInfo from './historyListInfo.vue';
+import HistoryListInfo from './historyListInfo.vue';
 const common: any = commonFun;
 const selectedItem = ref({});
 const range = ref(null);

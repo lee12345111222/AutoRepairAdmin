@@ -11,10 +11,13 @@
     </div>
     <div class="login_form">
       <div class="formItem">
-        <n-input placeholder="請輸入用户名" />
+        <n-input
+          v-model:value="params.username"
+          placeholder="請輸入用户名" />
       </div>
       <div class="formItem">
         <n-input
+          v-model:value="params.password"
           placeholder="請輸入密码"
           type="password"
           show-password-on="click" />
@@ -38,10 +41,18 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import store from '@/store/index';
+import { req } from '@/common/index';
+import { ref } from 'vue';
 const router = useRouter();
-const gotoLogin = (flag: any) => {
-  store.commit('setRole', flag);
-  router.push({ name: 'home' });
+const params = ref({
+  password: '', username: ''
+});
+const gotoLogin = async(flag: any) => {
+  // const res = await req.post('/oauth/token',{})
+  const result = await req.post('/v1/login', params.value);
+
+  // store.commit('setRole', flag);
+  // router.push({ name: 'home' });
 };
 const gotoRegister = () => {
   router.push({ name: 'register' });
@@ -54,22 +65,26 @@ const gotoRegister = () => {
   align-items: center;
   flex-direction: column;
   background-color: #fff;
+
   .form_box {
     width: 924px;
     height: 581px;
 
     position: relative;
+
     .f_line {
       position: absolute;
       left: -375px;
       top: 1px;
     }
+
     .f_l {
       position: absolute;
       z-index: 99;
       top: 98px;
       width: 50%;
       text-align: center;
+
       .f_l_t {
         font-family: PingFang SC;
         font-weight: bold;
@@ -77,6 +92,7 @@ const gotoRegister = () => {
         color: #ffffff;
         line-height: 36px;
       }
+
       .f_l_b {
         font-family: PingFang SC;
         font-weight: 500;
@@ -87,6 +103,7 @@ const gotoRegister = () => {
     }
   }
 }
+
 .formItem {
   margin-top: 18px;
 }
@@ -95,6 +112,7 @@ const gotoRegister = () => {
   width: 100%;
   padding: 0px 10%;
 }
+
 .loginBtn {
   height: 40px;
   background: #1ba599;
@@ -109,6 +127,7 @@ const gotoRegister = () => {
   align-items: center;
   width: 45%;
 }
+
 ::v-deep {
   .n-input {
     height: 47px;
@@ -116,9 +135,11 @@ const gotoRegister = () => {
     border-radius: 24px;
     --n-border: 1px solid #1ba599 !important;
   }
+
   .n-input__input-el {
     height: 47px !important;
   }
+
   .n-input .n-input__placeholder {
     font-family: PingFang SC;
     font-weight: 500;
@@ -126,16 +147,19 @@ const gotoRegister = () => {
     color: #a2a2a2 !important;
     line-height: 36px;
   }
+
   .custom-tabs .n-tabs-bar {
     background-color: transparent !important;
   }
 }
+
 .login_title {
   font-size: 40px;
   font-weight: bold;
   color: #1ba599;
 }
-.login_btn{
+
+.login_btn {
   margin-top: 56px;
   display: flex;
   justify-content: space-between;

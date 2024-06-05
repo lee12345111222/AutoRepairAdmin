@@ -1,7 +1,7 @@
 import store from '../store/index';
 import axios from 'axios';
 const windows: any = window;
-const req = axios.create({ baseURL: '/api' });
+export const req = axios.create({ baseURL: '/api' });
 windows.getCallBack = async function(key: any, val: any) {
   store.state.userInfo = val;
   //获取后端解析后的用户数据放到缓存里

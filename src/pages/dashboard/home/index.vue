@@ -143,7 +143,7 @@
         <div />
       </template>
       <div class="modalContent">
-        <DwxInfo
+        <RepairedInfo
           :selected-item="selectedItem"
           :flag="funFlag" />
       </div>
@@ -174,7 +174,7 @@
         <div />
       </template>
       <div class="modalContent">
-        <DjcInfo
+        <CheckedInfo
           :selected-item="selectedDjcItem"
           :flag="funDjcFlag" />
       </div>
@@ -205,8 +205,8 @@ import {
   Eye, CheckmarkSharp, TrashSharp, DuplicateSharp
 } from '@vicons/ionicons5';
 
-import DwxInfo from './repairedInfo.vue';
-import DjcInfo from './djcInfo.vue';
+import RepairedInfo from './repairedInfo.vue';
+import CheckedInfo from './checkedInfo.vue';
 import commonFun from '@/common/index';
 const showDjcModal = ref(false);
 const selectedDjcItem = ref({});

@@ -62,7 +62,7 @@ const routes: RouteRecordRaw[] = [
         path: 'repairedInfo',
         name: 'repairedInfo',
         meta: {
-          title: '待維修',
+          title: '待維修彈框',
           actIndex: 3
         },
         component: () => import('../pages/dashboard/home/repairedInfo.vue')
@@ -80,7 +80,7 @@ const routes: RouteRecordRaw[] = [
         path: 'checkedInfo',
         name: 'checkedInfo',
         meta: {
-          title: '待檢查',
+          title: '待檢查彈框',
           actIndex: 4
         },
         component: () => import('../pages/dashboard/home/checkedInfo.vue')
